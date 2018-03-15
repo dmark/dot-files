@@ -1,20 +1,48 @@
-set nocompatible
-filetype off
+set nocompatible            " be iMproved, required
+filetype off                " required
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" set the run time path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
+" all plugins must be listed between vundle#begin() and vundle#end()
+Bundle 'VundleVim/Vundle.vim'
 
-" add plugins below this line
-Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+" add additional plugins below this line
+" https://github.com/Lokaltog/vim-powerline -- DEPRECATED
+"Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+" https://github.com/powerline/powerline -- replaced with system wide
+" powerline installation via pip. See below.
+"Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+" https://github.com/tpope/vim-fugitive -- git integration
 Bundle 'tpope/vim-fugitive'
+" https://github.com/scrooloose/nerdtree -- file browser, bound to F2 (see
+" below)
 Bundle 'scrooloose/nerdtree'
+" https://github.com/python-mode/python-mode -- Vim as Python IDE
 Bundle 'klen/python-mode'
+" https://github.com/davidhalter/jedi-vim -- Python autocompletion
 Bundle 'davidhalter/jedi-vim'
-" add plugins above this line
 
-filetype plugin indent on
+" colorschemes
+" https://github.com/jnurmine/Zenburn
+Bundle 'jnurmine/Zenburn'
+" https://github.com/altercation/vim-colors-solarized
+Bundle 'altercation/vim-colors-solarized'
+" add additional plugins above this line
+
+" all of you plugins must be added before this line
+call vundle#end()           " required
+filetype plugin indent on   " required
+
+" enable Powerline from system wide pip installation
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
+
+" Powerline setup
+set guifont=Inconsolata\ for\ Powerline\ 9
+set laststatus=2
 
 " python-mode setup
 " Activate rope
@@ -29,6 +57,8 @@ filetype plugin indent on
 " ]]            Jump on next class or function (normal, visual, operator modes)
 " [M            Jump on previous class or method (normal, visual, operator modes)
 " ]M            Jump on next class or method (normal, visual, operator modes)
+
+" deactivate rope -- we're using jedi-vim
 let g:pymode_rope = 0
 
 " Documentation
@@ -56,10 +86,6 @@ let g:pymode_syntax_space_errors = g:pymode_syntax_all
 
 " Don't autofold code
 let g:pymode_folding = 0
-
-" Powerline setup
-set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
-set laststatus=2
 
 " NERDTree setup
 map <F2> :NERDTreeToggle<CR>
@@ -93,8 +119,8 @@ set showmatch
 let python_highlight_all=1
 
 " set the colorscheme
-"set background=dark
-"colorscheme zenburn
+set background=dark
+colorscheme solarized
 
 " show invisible characters
 set list listchars=tab:▷⋅,trail:⋅,nbsp:⋅
