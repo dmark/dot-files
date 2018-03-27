@@ -120,7 +120,7 @@ let python_highlight_all=1
 
 " set the colorscheme
 set background=dark
-colorscheme solarized
+colorscheme zenburn
 
 " show invisible characters
 set list listchars=tab:▷⋅,trail:⋅,nbsp:⋅
