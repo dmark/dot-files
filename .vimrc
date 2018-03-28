@@ -1,3 +1,21 @@
+" startup:
+"
+" 0. clone dot-files and copy .vimrc to ${HOME}
+"   git clone git@github.com:dmark/dot-files.git
+"   cp dot-files/.vimrc ${HOME}
+"
+" 1. install Vundle:
+"   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+"
+" 2. install Powerline:
+"   pip install powerline-status
+"
+" 3. clone Powerline patched fonts repo and install the fonts you want:
+"   git clone https://github.com/powerline/fonts.git
+"
+" 4. open .vimrc and tell Vundle to install the plugins:
+"   :PluginInstall
+
 set nocompatible            " be iMproved, required
 filetype off                " required
 
@@ -39,7 +57,6 @@ filetype plugin indent on   " required
 python3 from powerline.vim import setup as powerline_setup
 python3 powerline_setup()
 python3 del powerline_setup
-
 " Powerline setup
 set guifont=Inconsolata\ for\ Powerline\ 9
 set laststatus=2
@@ -95,6 +112,9 @@ syntax on
 
 " show line numbers
 set number
+
+" make backspace work
+set backspace=2
 
 " set tabs to have 4 spaces
 set tabstop=8
