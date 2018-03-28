@@ -1,0 +1,11 @@
+alias c='clear && hr'
+alias h='history'
+alias grep='grep --color=auto'
+alias g='grep'
+
+alias condaoff='PATH=${OPATH}'
+alias condaon='OPATH=${PATH};PATH=/Users/citmkd/anaconda/bin:${PATH}'
+
+alias hogs="/bin/ls -1A|xargs -d '\n' du -ks|sort -n"
+alias un64='awk '\''BEGIN{FS=":: ";c="base64 -d"}{if(/\w+:: /) {print $2 |& c; close(c,"to"); c |& getline $2; close(c); printf("%s:: \"%s\"\n", $1, $2); next} print $0 }'\'''
+
