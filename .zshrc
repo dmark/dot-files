@@ -65,7 +65,7 @@ HIST_STAMPS="yyyy-mm-dd"
 export GOPATH=${HOME}/go
 
 source $ZSH/oh-my-zsh.sh
-[[ $OS -eq $DARWIN && -a /usr/local/share/zsh/site-functions/aws_zsh_completer.sh]] && . /usr/local/share/zsh/site-functions/aws_zsh_completer.sh
+[[ $OS -eq $DARWIN && -a /usr/local/share/zsh/site-functions/aws_zsh_completer.sh ]] && . /usr/local/share/zsh/site-functions/aws_zsh_completer.sh
 [[ $OS -eq $LINUX && -a $HOME/.local/bin/aws_zsh_completer.sh ]] && . $HOME/.local/bin/aws_zsh_completer.sh
 
 # You may need to manually set your language environment
