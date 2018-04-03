@@ -1,5 +1,10 @@
+LINUX="Linux"
+DARWIN="Darwin"
+OS=`uname`
+
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/citmkd/.oh-my-zsh
+[[ $OS -eq $DARWIN && -d /Users/citmkd/.oh-my-zsh ]] && export ZSH=/Users/citmkd/.oh-my-zsh
+[[ $OS -eq $LINUX && -d /home/mark/.oh-my-zsh ]] && export ZSH=/home/mark/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -47,11 +52,12 @@ HIST_STAMPS="yyyy-mm-dd"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(autopep8 aws command-not-found common-aliases debian docker git git-extras heroku jsontools lein pep8 pip python ruby sudo vagrant wd)
-plugins=(autopep8 aws brew docker heroku jsontools osx pep8 python tmux wd)
+[[ $OS -eq $DARWIN ]] && plugins=(autopep8 aws brew heroku jsontools osx pep8 python tmux wd)
+[[ $OS -eq $LINUX ]] && plugins=(autopep8 apt aws heroku jsontools pep8 python tmux wd)
 
 # User configuration
 
-export PATH="${HOME}/.local/bin:${PATH}"
+[[ $OS -eq $DARWIN ]] && export PATH="${HOME}/.local/bin:${PATH}"
 #export PATH="${HOME}/anaconda/bin:${HOME}/.local/bin:${PATH}"
 # export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -59,8 +65,8 @@ export PATH="${HOME}/.local/bin:${PATH}"
 export GOPATH=${HOME}/go
 
 source $ZSH/oh-my-zsh.sh
-#source ${HOME}/.local/bin/aws_zsh_completer.sh
-source /usr/local/share/zsh/site-functions/aws_zsh_completer.sh
+[[ $OS -eq $DARWIN && -a /usr/local/share/zsh/site-functions/aws_zsh_completer.sh]] && . /usr/local/share/zsh/site-functions/aws_zsh_completer.sh
+[[ $OS -eq $LINUX && -a $HOME/.local/bin/aws_zsh_completer.sh ]] && . $HOME/.local/bin/aws_zsh_completer.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -72,7 +78,8 @@ source /usr/local/share/zsh/site-functions/aws_zsh_completer.sh
 #   export EDITOR='mvim'
 # fi
 
-EDITOR='vim'
+export EDITOR='vim'
+export VISUAL=$EDITOR
 
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
